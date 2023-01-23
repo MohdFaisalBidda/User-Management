@@ -3,10 +3,10 @@ import { Menu, MenuButton, MenuList, Button, Flex, Box, Heading, Spacer} from '@
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
 
+
 const Events = ({ users, handleData }) => {
 
     const [data, setData] = useState([]);
-    // const [date, setDate] = useState('');
     const [active, setActive] = useState(false);
 
     const filterGender = (catItem) => {
@@ -25,14 +25,18 @@ const Events = ({ users, handleData }) => {
 
         setData(Updated)
     }
-    // const filterDate = (currDate) => {
-    //     setActive(true)
-    //     const Updated = users.filter((curr) => {
-    //         return curr.date === currDate;
-    //     })
+  
 
-    //     setData(Updated)
-    // }
+    const handleFilterByDate = async (dt) => {
+        setActive(true)
+        const Updated = users.filter((curr) => {
+            return curr.date === dt;
+        })
+        setData(Updated)
+    
+    }
+
+    
 
 
     return (
@@ -56,18 +60,21 @@ const Events = ({ users, handleData }) => {
                             <Button onClick={() => filterLocation("Chennai")}>Chennai</Button>
                             <Button onClick={() => filterLocation("Hyderabad")}>Hyderabad</Button>
                         </MenuList>
-                        {/* <MenuItem>
-                            <Input  type="date" onChange={(e)=>console.log(e.target.value)} onClick={()=>filterDate("2023-01-05")}/>
-                            <Input value={date} type="time" onChange={(e)=>console.log(e.target.value)} />
-                        </MenuItem> */}
+                        <MenuList>
+                            <Button onClick={()=>handleFilterByDate("5-Jan-23")}>5-Jan-23</Button>
+                            <Button onClick={()=>handleFilterByDate("6-Jan-23")}>6-Jan-23</Button>
+                            <Button onClick={()=>handleFilterByDate("7-Jan-23")}>7-Jan-23</Button>
+                            <Button onClick={()=>handleFilterByDate("8-Jan-23")}>8-Jan-23</Button>
+                            <Button onClick={()=>handleFilterByDate("9-Jan-23")}>9-Jan-23</Button>
+                        </MenuList>
                     </MenuList>
                 </Menu>
             </Flex>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", background: "black", padding: "10px", marginTop: "15px", fontSize: "20px", overflow: "scroll", height: "800px" }}>
-                {!active ? users.map((user, i) => {
+                {!active ? users.map((user) => {
                     return (
                         <>
-                            <div key={i} style={{ border: "2px solid green", margin: "0 0 20px 0", background: "lightgray", cursor: "pointer" }} onClick={() => handleData(user.id)}>
+                            <div key={user.id} style={{ border: "2px solid green", margin: "0 0 20px 0", background: "lightgray", cursor: "pointer" }} onClick={() => handleData(user.id)}>
 
                                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", fontWeight: "bold" }}>
 

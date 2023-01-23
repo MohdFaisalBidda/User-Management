@@ -13,10 +13,10 @@ const Details = ({ singleUser, active }) => {
                     w="100%"
                 >
 
-                    {active ? singleUser.map((user, index) => {
+                    {active ? singleUser.map((user, i) => {
                         return (
                             <>
-                                <Stack key={index} paddingLeft={5} paddingTop={100} maxW={{ base: '100%', sm: '500px' }}
+                                <Stack key={i} paddingLeft={5} paddingTop={100} maxW={{ base: '100%', sm: '500px' }}
                                 >
 
                                     <Text fontSize='2xl' paddingBottom={5} paddingLeft={5} ><b>{user.id}</b> <br /> Person Detected</Text>
